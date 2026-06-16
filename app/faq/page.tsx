@@ -95,40 +95,40 @@ export default function FaqPage() {
       />
 
       <header className="mb-10 sm:mb-14">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
+        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-indigo-400">
           Help Center
         </p>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+        <h1 className="text-4xl font-bold tracking-tight text-zinc-50 sm:text-5xl">
           Frequently asked questions
         </h1>
-        <p className="mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
+        <p className="mt-4 max-w-2xl text-lg text-zinc-300">
           Everything you need to know about finding a Game Master and booking
           your first tabletop RPG session.
         </p>
       </header>
 
-      <div className="divide-y divide-zinc-200 border-y border-zinc-200 dark:divide-zinc-800 dark:border-zinc-800">
+      <div className="divide-y divide-white/10 border-y border-white/10">
         {FAQS.map((faq) => (
           <details key={faq.question} className="group py-2">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-left text-lg font-medium text-zinc-900 transition-colors hover:text-indigo-600 dark:text-zinc-100 dark:hover:text-indigo-400 [&::-webkit-details-marker]:hidden">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-left text-lg font-medium text-zinc-100 transition-colors hover:text-indigo-400 [&::-webkit-details-marker]:hidden">
               <span>{faq.question}</span>
               <ChevronDown
                 aria-hidden
                 className="size-5 shrink-0 text-zinc-400 transition-transform duration-200 group-open:rotate-180"
               />
             </summary>
-            <p className="pb-5 pr-9 text-base leading-7 text-zinc-600 dark:text-zinc-400">
+            <p className="pb-5 pr-9 text-base leading-7 text-zinc-300">
               {faq.answer}
             </p>
           </details>
         ))}
       </div>
 
-      <p className="mt-12 text-center text-zinc-600 dark:text-zinc-400">
+      <p className="mt-12 text-center text-zinc-400">
         Still have questions?{" "}
         <a
           href="mailto:support@startplaying.games"
-          className="font-medium text-indigo-600 underline-offset-4 hover:underline dark:text-indigo-400"
+          className="font-medium text-indigo-400 underline-offset-4 hover:underline"
         >
           Contact our support team
         </a>

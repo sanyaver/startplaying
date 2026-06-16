@@ -80,14 +80,14 @@ const SECTIONS: Section[] = [
 export default function TermsPage() {
   return (
     <main className="mx-auto w-full max-w-3xl px-6 py-16 sm:py-24">
-      <header className="mb-10 border-b border-zinc-200 pb-8 dark:border-zinc-800">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+      <header className="mb-10 border-b border-white/10 pb-8">
+        <h1 className="text-4xl font-bold tracking-tight text-zinc-50 sm:text-5xl">
           Terms of Service
         </h1>
-        <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+        <p className="mt-3 text-sm text-zinc-400">
           Last updated {LAST_UPDATED}
         </p>
-        <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
+        <p className="mt-4 text-lg text-zinc-300">
           These terms govern your use of {SITE.legalName} and the booking of
           tabletop RPG sessions through our marketplace.
         </p>
@@ -96,10 +96,10 @@ export default function TermsPage() {
       <div className="space-y-10">
         {SECTIONS.map((section) => (
           <section key={section.heading}>
-            <h2 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+            <h2 className="text-xl font-semibold tracking-tight text-zinc-100">
               {section.heading}
             </h2>
-            <div className="mt-3 space-y-3 text-base leading-7 text-zinc-600 dark:text-zinc-400">
+            <div className="mt-3 space-y-3 text-base leading-7 text-zinc-300">
               {section.body.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
@@ -108,7 +108,7 @@ export default function TermsPage() {
         ))}
       </div>
 
-      <p className="mt-12 text-sm text-zinc-500 dark:text-zinc-400">
+      <p className="mt-12 text-sm text-zinc-500">
         This document is a sample terms of service for a demo marketplace and
         does not constitute legal advice.
       </p>
