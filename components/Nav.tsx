@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 
 const links = [
   { href: "/", label: "Browse GMs" },
@@ -7,7 +9,8 @@ const links = [
   { href: "/faq", label: "FAQ" },
 ];
 
-export default function Nav() {
+export default async function Nav() {
+  const { userId } = await auth();
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0b0b12]/80 backdrop-blur">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
@@ -29,13 +32,30 @@ export default function Nav() {
           ))}
         </div>
         <div className="flex items-center gap-3">
-          {/* Auth slot — orchestrator swaps in Clerk <SignInButton>/<UserButton> */}
-          <Link
-            href="/quiz"
-            className="rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-violet-900/30 transition-transform hover:scale-105"
-          >
-            Find my game
-          </Link>
+          {userId ? (
+            <>
+              <Link
+                href="/quiz"
+                className="hidden rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-violet-900/30 transition-transform hover:scale-105 sm:block"
+              >
+                Find my game
+              </Link>
+              <UserButton />
+            </>
+          ) : (
+            <>
+              <SignInButton mode="modal">
+                <button className="hidden text-sm font-medium text-zinc-300 transition-colors hover:text-white sm:block">
+                  Sign in
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-violet-900/30 transition-transform hover:scale-105">
+                  Sign up
+                </button>
+              </SignUpButton>
+            </>
+          )}
         </div>
       </nav>
     </header>
