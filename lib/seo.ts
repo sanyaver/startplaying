@@ -37,10 +37,13 @@ export function buildMetadata({
   path,
 }: BuildMetadataArgs): Metadata {
   const url = `${BASE_URL}${path}`;
+  // The root layout (orchestrator-owned) defines a `%s | StartPlaying` title
+  // template, so the page title stays unbranded to avoid doubling. OpenGraph /
+  // Twitter titles are not affected by the template, so we brand them here.
   const fullTitle = `${title} | ${SITE.name}`;
   return {
     metadataBase: new URL(BASE_URL),
-    title: fullTitle,
+    title,
     description,
     alternates: { canonical: url },
     openGraph: {
